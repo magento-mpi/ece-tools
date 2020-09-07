@@ -12,6 +12,8 @@ namespace Magento\MagentoCloud\App;
  */
 class Error
 {
+    public const DEFAULT_ERROR = 1;
+
     public const BUILD_ENV_PHP_IS_NOT_WRITABLE = 2;
     public const BUILD_CONFIG_NOT_DEFINED = 3;
     public const BUILD_CONFIG_PARSE_FAILED = 4;
@@ -71,6 +73,7 @@ class Error
     public const DEPLOY_CRYPT_KEY_IS_ABSENT = 131;
     public const DEPLOY_ES_CANNOT_CONNECT = 132;
     public const DEPLOY_WRONG_BRAINTREE_VARIABLE = 133;
+    public const DEPLOY_WRONG_SEARCH_ENGINE = 134;
 
     public const PD_DEPLOY_IS_FAILED = 201;
     public const PD_ENV_PHP_IS_NOT_WRITABLE = 202;
@@ -126,6 +129,8 @@ class Error
     public const WARN_SPLIT_DB_ENABLING_SKIPPED = 2023;
     public const WARN_NOT_ENOUGH_DATA_SPLIT_DB_VAR = 2024;
     public const WARN_SLAVE_CONNECTION_NOT_SET = 2025;
+    public const WARN_COPY_MOUNTED_DIRS_FAILED = 2026;
+    public const WARN_NOT_SUPPORTED_MAGE_MODE = 2027;
 
     /**
      * Post-deploy
@@ -133,6 +138,7 @@ class Error
     public const WARN_DEBUG_LOG_ENABLED = 3001;
     public const WARN_CANNOT_FETCH_STORE_URLS = 3002;
     public const WARN_CANNOT_FETCH_STORE_URL = 3003;
+    public const WARN_CREATE_CONFIG_BACKUP_FAILED = 3004;
 
     /**
      * General

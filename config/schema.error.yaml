@@ -331,6 +331,12 @@
     suggestion: 'Support for the Braintree module is no longer included with Magento 2.4.0 and later. Remove the CONFIG__STORES__DEFAULT__PAYMENT__BRAINTREE__CHANNEL variable from the variables section of the .magento.app.yaml file. For Braintree support, use an official Braintree Payments extension from the Magento Marketplace instead.'
     stage: deploy
     type: critical
+!php/const Magento\MagentoCloud\App\Error::DEPLOY_WRONG_SEARCH_ENGINE:
+    step: validate-config
+    title: 'Magento 2.4.0 requires Elasticsearch service to be installed'
+    suggestion: 'Install Elasticsearch service'
+    stage: deploy
+    type: critical
 !php/const Magento\MagentoCloud\App\Error::PD_DEPLOY_IS_FAILED:
     step: is-deploy-failed
     title: 'Deploy stage failed'
@@ -565,6 +571,18 @@
     stage: deploy
     step: 'install-update:split-db'
     type: warning
+!php/const Magento\MagentoCloud\App\Error::WARN_COPY_MOUNTED_DIRS_FAILED:
+    title: 'Failed to restore some data generated during the build phase to the mounted directories'
+    stage: deploy
+    suggestion: 'Check the `cloud.log` for more information.'
+    step: 'pre-deploy:restore-writable-dirs'
+    type: warning
+!php/const Magento\MagentoCloud\App\Error::WARN_NOT_SUPPORTED_MAGE_MODE:
+    title: 'Mode value for MAGE_MODE environment variable not supported'
+    stage: deploy
+    suggestion: 'Remove MAGE_MODE environment variable, or change its value to "production". Magento Cloud supports only "production" mode.'
+    step: 'validate-config:mage-mode-variable'
+    type: warning
 !php/const Magento\MagentoCloud\App\Error::WARN_DEBUG_LOG_ENABLED:
     title: 'Debug logging is enabled in Magento'
     suggestion: 'To save disk space, do not enable debug logging for your production environments.'
@@ -580,6 +598,11 @@
     title: 'Can not fetch store url'
     stage: post-deploy
     step: warm-up
+    type: warning
+!php/const Magento\MagentoCloud\App\Error::WARN_CREATE_CONFIG_BACKUP_FAILED:
+    title: 'Cannot create backup files'
+    stage: post-deploy
+    step: backup
     type: warning
 !php/const Magento\MagentoCloud\App\Error::WARN_CANNOT_GET_PROC_COUNT:
     title: 'Can not get system processor count:'
